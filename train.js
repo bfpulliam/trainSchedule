@@ -21,7 +21,7 @@ $("#add-train-btn").on("click", function(event) {
     var frequency = $("#rate-input").val().trim();
     //moment($("#rate-input").val().trim(), "MM/DD/YYYY").format("X");
   
-    // Creates organizational structure for
+    // Creates organizational structure
     var newTrain = {
       name: trainName,
       destination: destination,
@@ -33,9 +33,9 @@ $("#add-train-btn").on("click", function(event) {
     database.ref().push(newTrain);
   
     // Logs everything to console
-    console.log(newTrain.name);
-    console.log(newTrain.destination);
-    console.log(newTrain.start);
+    // console.log(newTrain.name);
+    // console.log(newTrain.destination);
+    console.log("train time", newTrain.start);
     console.log(newTrain.rate);
   
     alert("Train successfully added");
@@ -47,7 +47,7 @@ $("#add-train-btn").on("click", function(event) {
     $("#rate-input").val("");
   });
   
-  // 3. Create Firebase event for adding employee to the database and a row in the html when a user adds an entry
+  // 3. Create Firebase event for adding trains to the database and a row in the html when a user adds an entry
   database.ref().on("child_added", function(childSnapshot) {
     console.log(childSnapshot.val());
   
@@ -62,19 +62,35 @@ $("#add-train-btn").on("click", function(event) {
     console.log(destination);
     console.log(start);
     console.log(rate);
-  
-    // Calculate the next arrival
-    var nextArrival = moment().diff(moment(start, "X"), "months");
-    console.log(nextArrival);
+    
+    var startConverted = moment(start, "HH:mm").subtract(1, "years");
+    console.log(startConverted);
 
-    //Calculate minutes away
-    var minutesAway =
-    console.log(minutesAway);
+    // Current Time
+    var currentTime = moment();
+    console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+
+    // Difference between the times
+    var diffTime = moment().diff(moment(startConverted), "minutes");
+    console.log("DIFFERENCE IN TIME: " + diffTime);
+
+    // Time apart (remainder)
+    var tRemainder = diffTime % rate;
+    console.log(tRemainder);
+
+    // Minute Until Train
+    var minutesAway =  - tRemainder;
+    console.log("MINUTES TILL TRAIN: " + minutesAway);
+
+    // Next Train
+    var nextArrival = moment().add(minutesAway, "minutes");
+    console.log("ARRIVAL TIME: " + moment(nextArrival).format("hh:mm"));
 
     // Create the new row
     var newRow = $("<tr>").append(
       $("<td>").text(trainName),
       $("<td>").text(destination),
+      $("<td>").text(start),
       $("<td>").text(rate),
       $("<td>").text(nextArrival),
       $("<td>").text(minutesAway),
@@ -83,12 +99,3 @@ $("#add-train-btn").on("click", function(event) {
     // Append the new row to the table
     $("#train-table > tbody").append(newRow);
   });
-  
-  // Example Time Math
-  // -----------------------------------------------------------------------------
-  // Assume Employee start date of January 1, 2015
-  // Assume current date is March 1, 2016
-  
-  // We know that this is 15 months.
-  // Now we will create code in moment.js to confirm that any attempt we use meets this test case
-  
