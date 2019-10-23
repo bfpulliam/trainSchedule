@@ -12,4 +12,5 @@ Destination
 First Train Time -- in military time
 Frequency -- in minutes
 
-[!(https://img.shields.io/badge/-Built%20with%20Bootstrap-blueviolet)
+[![Bootstrap](https://img.shields.io/badge/-Built%20with%20Bootstrap-blueviolet)
+[![Coveralls](http://img.shields.io/coveralls/rstacruz/REPO.svg?style=flat)](https://coveralls.io/r/rstacruz/REPO)
