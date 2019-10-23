@@ -7,9 +7,9 @@ Users from many different machines are able to view same train times due to the 
 This app calculates's when the next train will arrive relative to the user's current time.
 
 When adding trains, administrators should be able to submit the following:
-Train Name
-Destination
-First Train Time -- in military time
-Frequency -- in minutes
+* Train Name
+* Destination
+* First Train Time -- in military time
+* Frequency -- in minutes
 
 ![Bootstrap](https://img.shields.io/badge/-Built%20with%20Bootstrap-blueviolet)
