@@ -54,6 +54,25 @@
           </div>
         </div>
 
+        <style>
+          ::-webkit-input-placeholder { /* Chrome */
+            color: #D3D3D3;
+            font-style: italic;
+          }
+          :-ms-input-placeholder { /* IE 10+ */
+            color: #D3D3D3;
+            font-style: italic;
+          }
+          ::-moz-placeholder { /* Firefox 19+ */
+            color: #D3D3D3;
+            font-style: italic;
+          }
+          :-moz-placeholder { /* Firefox 4 - 18 */
+            color: #D3D3D3;
+            font-style: italic;
+          }
+        </style>
+
         <div class="row">
           <div class="col-md-12">
             <!-- Add Train  -->
@@ -65,19 +84,19 @@
                 <form>
                   <div class="form-group">
                     <label for="train-name-input">Train Name</label>
-                    <input required class="form-control" id="train-name-input" placeholder="Stankonia Express" type="text" style="color:lightgrey">
+                    <input required class="form-control" id="train-name-input" placeholder="Stankonia Express" type="text">
                   </div>
                   <div class="form-group">
                     <label for="destination-input">Destination</label>
-                    <input required class="form-control" id="destination-input" placeholder="Idlewild" type="text" style="color:lightgrey">
+                    <input required class="form-control" id="destination-input" placeholder="Idlewild" type="text">
                   </div>
                   <div class="form-group">
                     <label for="start-input">First Train Time (HH:mm - military time)</label>
-                    <input required class="form-control" id="start-input" placeholder="00:00" type="text" min="00:00" max="23:59" style="color:lightgrey">
+                    <input required class="form-control" id="start-input" placeholder="00:00" type="text" min="00:00" max="23:59">
                   </div>
                   <div class="form-group">
-                    <label for="frequency-input">Frequency (min)</label>
-                    <input required class="form-control" id="rate-input" placeholder="00" type="text" style="color:lightgrey">
+                    <label for="frequency-input">Frequency (minutes)</label>
+                    <input required class="form-control" id="rate-input" placeholder="00" type="text">
                   </div>
                   <button class="btn btn-primary float-right" id="add-train-btn" value="Reload Page" onClick="document.location.reload(true)">Submit</button>
                 </form>
